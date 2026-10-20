@@ -110,7 +110,55 @@
   .tile::after{content:"";position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,.4), transparent 60%)}
   .tile span{position:relative;z-index:2;padding:0 6px 6px}
   .tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-  @media (min-width:760px){.tiles{grid-template-columns:repeat(3,1fr)}.tile{min-height:300px}}
+  .tile{aspect-ratio:4/5;min-height:0}
+  .tile::before,.tile::after{pointer-events:none}
+  .tile video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;background:#000}
+  .tile.video{align-items:flex-start}
+  .tile.video::after{display:none}
+  .tile.video span{background:rgba(36,8,18,.75);padding:4px 12px;margin:2px;z-index:3;pointer-events:none}
+  @media (min-width:760px){.tiles{grid-template-columns:repeat(3,1fr)}}
+
+
+  /* video */
+  .video-wrap{max-width:420px;margin:34px auto 0}
+  .vbox{position:relative;aspect-ratio:4/5;background:#000;overflow:hidden}
+  .vthumb{position:absolute;inset:0;width:100%;height:100%;border:0;padding:0;cursor:pointer;background:#000}
+  .vthumb img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 60%}
+  .vthumb .vplay{position:absolute;top:50%;left:50%;width:72px;height:72px;margin:-36px 0 0 -36px;border-radius:50%;background:rgba(20,5,10,.62);border:1.5px solid var(--gold-soft);display:grid;place-items:center;color:var(--gold-soft)}
+  .vthumb .vplay svg{width:32px;height:32px;margin-left:3px}
+  .vbox video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000}
+
+  /* rooms */
+  .rb{margin-top:56px;text-align:left}
+  .car-wrap{position:relative}
+  .car{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .car::-webkit-scrollbar{display:none}
+  .car img{flex:0 0 88%;width:88%;aspect-ratio:3/4;object-fit:cover;scroll-snap-align:start;cursor:zoom-in;display:block;background:var(--rose)}
+  .cnt{position:absolute;right:12px;bottom:12px;background:rgba(20,5,10,.72);color:var(--blush);font-size:.85rem;padding:3px 12px;border-radius:999px;pointer-events:none}
+  .rb h3{font-family:var(--display);font-weight:500;text-transform:uppercase;letter-spacing:.06em;font-size:1.55rem;margin-top:22px}
+  .rb .d{margin-top:10px;color:var(--muted)}
+  .rb ul{list-style:none;padding:0;margin:16px 0 0;display:grid;gap:8px}
+  .rb li{display:flex;gap:12px;align-items:center}
+  .rb li::before{content:"";width:8px;height:8px;background:var(--gold);transform:rotate(45deg);flex:none}
+  .rb .btn{margin-top:22px;width:100%}
+  @media (min-width:860px){
+    .rb{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center}
+    .rb .btn{width:auto}
+    .rb h3{margin-top:0}
+  }
+
+  .lb{position:fixed;inset:0;z-index:60;background:rgba(20,5,10,.97);display:none;flex-direction:column;align-items:center;padding:12px 16px calc(12px + env(safe-area-inset-bottom));color:var(--blush)}
+  .lb.open{display:flex}
+  .lb-bar{display:flex;justify-content:space-between;align-items:center;width:100%;max-width:900px;min-height:48px}
+  .lb-title{font-family:var(--display);font-size:1.3rem}
+  .lb button{background:transparent;border:1px solid rgba(241,217,160,.6);color:var(--gold-soft);cursor:pointer;font:inherit}
+  .lb-x{width:46px;height:46px;font-size:1.8rem;line-height:1;border-radius:2px}
+  .lb-stage{flex:1;min-height:0;width:100%;max-width:900px;display:flex;align-items:center;justify-content:center;touch-action:pan-y}
+  .lb-stage img,.lb-stage video{max-width:100%;max-height:100%;object-fit:contain;background:#000}
+  .lb-stage video{width:100%}
+  .lb-nav{display:flex;align-items:center;justify-content:center;gap:22px;min-height:56px}
+  .lb-nav button{width:56px;height:46px;font-size:1.9rem;line-height:1;border-radius:2px}
+  .lb-nav.hide{display:none}
 
   /* booking */
   .book{background:var(--wine);color:var(--blush)}
@@ -183,7 +231,7 @@
         <text x="100" y="118" text-anchor="middle">BJ</text>
       </svg>
       <h1>Quiet, neat rooms in the heart of Ilorin GRA.</h1>
-      <p class="lead">Golden BJ Guest House is a peaceful place to rest, tucked away on Comfort Ekpereonye Street. Send us your dates on WhatsApp and we'll arrange your room.</p>
+      <p class="lead">Golden BJ Guest House is a peaceful place to rest, in the heart of GRA, behind Noktel Hotel on John Oyewole Street. Send us your dates on WhatsApp and we'll arrange your room.</p>
       <div class="hero-cta">
         <a class="btn btn-gold" href="#book">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 12 0C5.4 0 .1 5.3.1 11.9c0 2.1.6 4.1 1.6 5.9L0 24l6.4-1.7a11.9 11.9 0 0 0 5.6 1.4c6.6 0 11.9-5.3 11.9-11.9 0-3.2-1.2-6.2-3.4-8.3zM12 21.7c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.8 1 1-3.7-.2-.4a9.800 9.800 0 0 1-1.5-5.200C2.100 6.500 6.600 2.100 12 2.100c2.600 0 5.100 1 6.900 2.900a9.700 9.700 0 0 1 2.900 6.900c0 5.400-4.400 9.800-9.800 9.800zm5.400-7.300c-.3-.1-1.700-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.200-.2.200-.3.200-.6.100-.3-.1-1.200-.4-2.300-1.400-.9-.8-1.400-1.700-1.600-2-.2-.3 0-.5.1-.6l.4-.5c.1-.2.200-.3.300-.5.100-.2 0-.4 0-.5l-.9-2.200c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.500s1.100 2.900 1.200 3.100c.1.200 2.100 3.200 5.100 4.500.7.300 1.300.5 1.700.6.700.2 1.400.2 1.900.1.600-.1 1.700-.7 2-1.400.2-.7.200-1.300.2-1.400-.1-.2-.3-.3-.6-.4z"/></svg>
@@ -215,9 +263,11 @@
 
     <dl class="glance" style="text-align:left">
       <div><dt>Guest house</dt><dd>Golden BJ Guest House</dd></div>
-      <div><dt>Address</dt><dd>Comfort Ekpereonye Street, off John Oyewole Street, GRA, Ilorin, Kwara State.</dd></div>
-      <div><dt>Phone and WhatsApp</dt><dd><a href="tel:+2348138276920">0813 827 6920</a></dd></div>
+      <div><dt>Address</dt><dd>10 John Oyewole Street, behind Noktel Hotel, GRA, Ilorin, Kwara State.</dd></div>
+      <div><dt>Phone and WhatsApp</dt><dd><a href="tel:+2348138276920">0813 827 6920</a> or <a href="tel:+2348059002999">0805 900 2999</a></dd></div>
       <div><dt>Guest rating</dt><dd>5.0 out of 5 from 3 Google reviews</dd></div>
+      <div><dt>Rooms</dt><dd>Four room styles, each with a ceiling fan and comfortable seating. The Blue Room is air-conditioned.</dd></div>
+      <div><dt>Lounge</dt><dd>A relaxed lounge area with a big TV and mood lighting. Watch the video tour below.</dd></div>
       <div><dt>What guests mention</dt><dd>A quiet environment, neat rooms and a relaxing atmosphere.</dd></div>
       <div><dt>Rates</dt><dd>Message us on WhatsApp for today's room rates.</dd></div>
     </dl>
@@ -259,16 +309,148 @@
     <div class="intro">
       <div class="orn" aria-hidden="true"><i></i></div>
       <h2>Take a look around.</h2>
-      <p>The rooms and the quiet spaces where guests unwind.</p>
+      <p>Watch the video tour, then scroll down to see each room.</p>
     </div>
-    <!-- To use real photos, replace each <span> label with: <img src="photo.jpg" alt="Describe the photo"> -->
-    <div class="tiles">
-      <div class="tile" style="--a:#65203A;--b:#240812"><span>The guest house</span></div>
-      <div class="tile" style="--a:#E2B04A;--b:#7A5314"><span>Rooms</span></div>
-      <div class="tile" style="--a:#4A1424;--b:#B98320"><span>Quiet corners</span></div>
+    <div class="video-wrap">
+      <div class="vbox" id="vbox">
+        <button type="button" class="vthumb" id="vthumb" aria-label="Play the video tour">
+          <img src="video-poster.jpg" alt="Video tour of Golden BJ Guest House" loading="eager" decoding="async">
+          <span class="vplay" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+        </button>
+      </div>
     </div>
   </div>
 </section>
+
+<section id="rooms" style="padding-top:20px">
+  <div class="wrap">
+    <div class="intro center">
+      <div class="orn" aria-hidden="true"><i></i></div>
+      <h2>Our rooms.</h2>
+      <p>Swipe through each room's photos, tap a photo to enlarge it, then tap Book Now.</p>
+    </div>
+    <article class="rb">
+      <div class="car-wrap">
+        <div class="car">
+          <img src="1000350841.jpg" alt="Green Room, photo 1" data-i="0" loading="eager" decoding="async">
+          <img src="1000350870.jpg" alt="Green Room, photo 2" data-i="1" loading="lazy" decoding="async">
+          <img src="1000350845.jpg" alt="Green Room, photo 3" data-i="2" loading="lazy" decoding="async">
+          <img src="1000350833.jpg" alt="Green Room, photo 4" data-i="3" loading="lazy" decoding="async">
+        </div>
+        <span class="cnt" aria-hidden="true">1 / 4</span>
+      </div>
+      <div class="rb-text">
+        <h3>Green Room</h3>
+        <p class="d">A calm room with a deep green velvet headboard and warm wooden flooring.</p>
+        <ul>
+        <li>Comfortable bed</li>
+        <li>Wall-mounted TV</li>
+        <li>Ceiling fan</li>
+        <li>Armchair seating</li>
+        </ul>
+      <button type="button" class="btn btn-ink bookbtn" data-room="Green Room">Book Now</button>
+      </div>
+    </article>
+    <article class="rb">
+      <div class="car-wrap">
+        <div class="car">
+          <img src="1000350849.jpg" alt="Gold Room, photo 1" data-i="4" loading="lazy" decoding="async">
+          <img src="1000350858.jpg" alt="Gold Room, photo 2" data-i="5" loading="lazy" decoding="async">
+          <img src="1000350872.jpg" alt="Gold Room, photo 3" data-i="6" loading="lazy" decoding="async">
+          <img src="1000350853.jpg" alt="Gold Room, photo 4" data-i="7" loading="lazy" decoding="async">
+          <img src="1000350859.jpg" alt="Gold Room, photo 5" data-i="8" loading="lazy" decoding="async">
+        </div>
+        <span class="cnt" aria-hidden="true">1 / 5</span>
+      </div>
+      <div class="rb-text">
+        <h3>Gold Room</h3>
+        <p class="d">A bright room with golden walls, a patterned feature wall and a cosy corner with an armchair.</p>
+        <ul>
+        <li>Comfortable bed</li>
+        <li>Wall-mounted TV</li>
+        <li>Ceiling fan</li>
+        <li>Armchair and side table</li>
+        </ul>
+      <button type="button" class="btn btn-ink bookbtn" data-room="Gold Room">Book Now</button>
+      </div>
+    </article>
+    <article class="rb">
+      <div class="car-wrap">
+        <div class="car">
+          <img src="1000350828.jpg" alt="Blue Room, photo 1" data-i="9" loading="lazy" decoding="async">
+          <img src="1000350844.jpg" alt="Blue Room, photo 2" data-i="10" loading="lazy" decoding="async">
+          <img src="1000350836.jpg" alt="Blue Room, photo 3" data-i="11" loading="lazy" decoding="async">
+        </div>
+        <span class="cnt" aria-hidden="true">1 / 3</span>
+      </div>
+      <div class="rb-text">
+        <h3>Blue Room</h3>
+        <p class="d">A cool, spacious blue room with air conditioning and a relaxed seating area.</p>
+        <ul>
+        <li>Air conditioning</li>
+        <li>TV on a stand</li>
+        <li>Ceiling fan</li>
+        <li>Sofa seating and wardrobe</li>
+        </ul>
+      <button type="button" class="btn btn-ink bookbtn" data-room="Blue Room">Book Now</button>
+      </div>
+    </article>
+    <article class="rb">
+      <div class="car-wrap">
+        <div class="car">
+          <img src="1000350857.jpg" alt="Burgundy Room, photo 1" data-i="12" loading="lazy" decoding="async">
+          <img src="1000350848.jpg" alt="Burgundy Room, photo 2" data-i="13" loading="lazy" decoding="async">
+          <img src="1000350830.jpg" alt="Burgundy Room, photo 3" data-i="14" loading="lazy" decoding="async">
+        </div>
+        <span class="cnt" aria-hidden="true">1 / 3</span>
+      </div>
+      <div class="rb-text">
+        <h3>Burgundy Room</h3>
+        <p class="d">A warm room in rich burgundy tones with a comfortable sofa.</p>
+        <ul>
+        <li>Comfortable bed</li>
+        <li>Ceiling fan</li>
+        <li>Sofa seating</li>
+        <li>Bedside table</li>
+        </ul>
+      <button type="button" class="btn btn-ink bookbtn" data-room="Burgundy Room">Book Now</button>
+      </div>
+    </article>
+    <article class="rb">
+      <div class="car-wrap">
+        <div class="car">
+          <img src="1000350863.jpg" alt="Bathrooms, photo 1" data-i="15" loading="lazy" decoding="async">
+          <img src="1000350861.jpg" alt="Bathrooms, photo 2" data-i="16" loading="lazy" decoding="async">
+          <img src="1000350868.jpg" alt="Bathrooms, photo 3" data-i="17" loading="lazy" decoding="async">
+          <img src="1000350865.jpg" alt="Bathrooms, photo 4" data-i="18" loading="lazy" decoding="async">
+        </div>
+        <span class="cnt" aria-hidden="true">1 / 4</span>
+      </div>
+      <div class="rb-text">
+        <h3>Bathrooms</h3>
+        <p class="d">Clean tiled bathrooms with a shower and toilet.</p>
+        <ul>
+        <li>Tiled walls</li>
+        <li>Shower</li>
+        <li>Toilet</li>
+        </ul>
+      </div>
+    </article>
+  </div>
+</section>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <div class="lb-bar">
+    <span class="lb-title" id="lbTitle"></span>
+    <button type="button" class="lb-x" id="lbClose" aria-label="Close">&times;</button>
+  </div>
+  <div class="lb-stage" id="lbStage"></div>
+  <div class="lb-nav" id="lbNav">
+    <button type="button" id="lbPrev" aria-label="Previous photo">&lsaquo;</button>
+    <span id="lbCount"></span>
+    <button type="button" id="lbNext" aria-label="Next photo">&rsaquo;</button>
+  </div>
+</div>
 
 <section class="book" id="book">
   <div class="wrap center">
@@ -309,8 +491,10 @@
           <div class="field">
             <label for="room">Room</label>
             <select id="room">
-              <option>Standard room</option>
-              <option>Deluxe room</option>
+              <option>Green Room</option>
+              <option>Gold Room</option>
+              <option>Blue Room (air-conditioned)</option>
+              <option>Burgundy Room</option>
               <option>More than one room</option>
               <option>Not sure yet</option>
             </select>
@@ -346,9 +530,10 @@
       <h2>Find us in GRA, Ilorin.</h2>
     </div>
     <div class="center" style="margin-top:30px">
-      <p class="address">Comfort Ekpereonye Street, off John Oyewole Street, GRA, Ilorin, Kwara State.</p>
+      <p class="address">10 John Oyewole Street, behind Noktel Hotel, GRA, Ilorin, Kwara State.</p>
       <div class="loc-btns" style="justify-content:center">
         <a class="btn btn-ink" href="tel:+2348138276920">Call 0813 827 6920</a>
+        <a class="btn btn-ink" href="tel:+2348059002999">Call 0805 900 2999</a>
       </div>
     </div>
   </div>
@@ -362,7 +547,8 @@
       <a class="btn btn-gold" href="https://wa.me/2348138276920?text=Hello%20Golden%20BJ%20Guest%20House%2C%20I%27d%20like%20to%20check%20availability." target="_blank" rel="noopener">WhatsApp 0813 827 6920</a>
       <a class="btn btn-line" href="tel:+2348138276920">Call us</a>
     </div>
-    <small>Golden BJ Guest House, Comfort Ekpereonye Street, off John Oyewole Street, GRA, Ilorin.</small>
+    <small>Golden BJ Guest House, 10 John Oyewole Street, behind Noktel Hotel, GRA, Ilorin.</small>
+    <small>0813 827 6920 | 0805 900 2999</small>
   </div>
 </footer>
 
@@ -418,6 +604,113 @@
     f.addEventListener("change", build);
   });
   build();
+})();
+</script>
+
+<script>
+(function(){
+  var P = [
+    ["1000350841.jpg","Green Room"],
+    ["1000350870.jpg","Green Room"],
+    ["1000350845.jpg","Green Room"],
+    ["1000350833.jpg","Green Room"],
+    ["1000350849.jpg","Gold Room"],
+    ["1000350858.jpg","Gold Room"],
+    ["1000350872.jpg","Gold Room"],
+    ["1000350853.jpg","Gold Room"],
+    ["1000350859.jpg","Gold Room"],
+    ["1000350828.jpg","Blue Room"],
+    ["1000350844.jpg","Blue Room"],
+    ["1000350836.jpg","Blue Room"],
+    ["1000350857.jpg","Burgundy Room"],
+    ["1000350848.jpg","Burgundy Room"],
+    ["1000350830.jpg","Burgundy Room"],
+    ["1000350863.jpg","Bathrooms"],
+    ["1000350861.jpg","Bathrooms"],
+    ["1000350868.jpg","Bathrooms"],
+    ["1000350865.jpg","Bathrooms"]
+  ];
+  var lb=document.getElementById("lb"), stage=document.getElementById("lbStage"),
+      nav=document.getElementById("lbNav"), count=document.getElementById("lbCount"),
+      title=document.getElementById("lbTitle"), closeBtn=document.getElementById("lbClose");
+  var idx=0, opener=null;
+
+  function show(){
+    var img=new Image();
+    img.src=P[idx][0];
+    img.alt=P[idx][1]+", photo "+(idx+1)+" of "+P.length;
+    stage.innerHTML=""; stage.appendChild(img);
+    title.textContent=P[idx][1];
+    count.textContent=(idx+1)+" / "+P.length;
+    var n=new Image(); n.src=P[(idx+1)%P.length][0];
+  }
+  function openPhoto(i, el){
+    idx=i; opener=el; show();
+    lb.classList.add("open");
+    document.body.style.overflow="hidden";
+    closeBtn.focus();
+  }
+  function close(){
+    lb.classList.remove("open");
+    stage.innerHTML="";
+    document.body.style.overflow="";
+    if(opener && opener.focus) opener.focus();
+  }
+  function step(d){ idx=(idx+d+P.length)%P.length; show(); }
+
+  Array.prototype.forEach.call(document.querySelectorAll(".car img"), function(im){
+    im.addEventListener("click", function(){ openPhoto(parseInt(im.getAttribute("data-i"),10), im); });
+  });
+  closeBtn.addEventListener("click", close);
+  document.getElementById("lbPrev").addEventListener("click", function(){step(-1)});
+  document.getElementById("lbNext").addEventListener("click", function(){step(1)});
+  lb.addEventListener("click", function(e){ if(e.target===lb||e.target===stage) close(); });
+  document.addEventListener("keydown", function(e){
+    if(!lb.classList.contains("open")) return;
+    if(e.key==="Escape") close();
+    if(e.key==="ArrowLeft") step(-1);
+    if(e.key==="ArrowRight") step(1);
+  });
+  var x0=null;
+  stage.addEventListener("touchstart", function(e){ x0=e.touches[0].clientX; }, {passive:true});
+  stage.addEventListener("touchend", function(e){
+    if(x0===null) return;
+    var dx=e.changedTouches[0].clientX-x0; x0=null;
+    if(Math.abs(dx)>50) step(dx<0?1:-1);
+  });
+
+  // photo counters on each room carousel
+  Array.prototype.forEach.call(document.querySelectorAll(".car-wrap"), function(w){
+    var car=w.querySelector(".car"), cnt=w.querySelector(".cnt"), imgs=car.querySelectorAll("img");
+    car.addEventListener("scroll", function(){
+      var step=imgs[0].offsetWidth+8;
+      var i=Math.min(imgs.length-1, Math.round(car.scrollLeft/step));
+      cnt.textContent=(i+1)+" / "+imgs.length;
+    }, {passive:true});
+  });
+
+  // Book Now buttons pre-select the room and jump to the booking form
+  Array.prototype.forEach.call(document.querySelectorAll(".bookbtn"), function(b){
+    b.addEventListener("click", function(){
+      var sel=document.getElementById("room"), want=b.getAttribute("data-room");
+      for(var i=0;i<sel.options.length;i++){
+        if(sel.options[i].text.indexOf(want)===0){ sel.selectedIndex=i; break; }
+      }
+      sel.dispatchEvent(new Event("change"));
+      document.getElementById("book").scrollIntoView({behavior:"smooth"});
+    });
+  });
+
+  // video plays right where the picture is
+  var vthumb=document.getElementById("vthumb");
+  vthumb.addEventListener("click", function(){
+    var v=document.createElement("video");
+    v.src="VID-20261020-WA0039.mp4";
+    v.controls=true; v.autoplay=true; v.playsInline=true; v.setAttribute("playsinline","");
+    document.getElementById("vbox").appendChild(v);
+    vthumb.remove();
+    v.play();
+  });
 })();
 </script>
 </body>
