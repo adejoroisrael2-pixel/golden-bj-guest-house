@@ -63,7 +63,13 @@
   .nav{display:flex;align-items:center;justify-content:space-between;padding:22px 0;text-align:left}
   .brand{font-family:var(--display);font-size:1.25rem;text-decoration:none}
   .nav .btn{min-height:42px;padding:0 20px;font-size:.92rem}
-  .hero-body{padding:18px 0 84px;max-width:720px;margin:0 auto}
+  .topbar{background:#fff;box-shadow:0 1px 0 rgba(36,8,18,.1)}
+  .topbar .nav{padding:10px 0}
+  .brand{display:flex;align-items:center}
+  .brand img{display:block;height:46px;width:auto}
+  .flogo{display:inline-block;background:#fff;padding:10px 22px;border-radius:6px;margin-bottom:26px}
+  .flogo img{display:block;height:50px;width:auto}
+  .hero-body{padding:60px 0 84px;max-width:720px;margin:0 auto}
   .seal{width:150px;height:150px;margin:0 auto 26px;display:block}
   .seal circle{fill:none;stroke:var(--gold);stroke-dasharray:1;stroke-dashoffset:1;animation:draw 2.2s ease-out .2s forwards}
   .seal circle.r2{animation-delay:.5s}
@@ -206,30 +212,23 @@
     .btn{transition:none}
   }
 </style>
+<link rel="icon" type="image/png" href="logo-square.png">
+<link rel="apple-touch-icon" href="logo-square.png">
 </head>
 <body>
 
-<header class="hero">
+<header>
+  <div class="topbar">
+    <div class="wrap">
+      <nav class="nav" aria-label="Main">
+        <a class="brand" href="#top"><img src="logo-horizontal.png" alt="Golden BJ Guest House" width="640" height="192"></a>
+        <a class="btn btn-gold" href="#book">Book now</a>
+      </nav>
+    </div>
+  </div>
+  <div class="hero">
   <div class="wrap">
-    <nav class="nav" aria-label="Main">
-      <a class="brand" href="#top">Golden BJ Guest House</a>
-      <a class="btn btn-gold" href="#book">Book now</a>
-    </nav>
-
     <div class="hero-body" id="top">
-      <svg class="seal" viewBox="0 0 200 200" role="img" aria-label="Golden BJ monogram">
-        <defs>
-          <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#F8E4B0"/>
-            <stop offset="50%" stop-color="#E2B04A"/>
-            <stop offset="100%" stop-color="#B98320"/>
-          </linearGradient>
-        </defs>
-        <circle class="r1" cx="100" cy="100" r="94" stroke-width="2" pathLength="1"/>
-        <circle class="r2" cx="100" cy="100" r="84" stroke-width="1" pathLength="1"/>
-        <circle class="r3" cx="100" cy="100" r="76" stroke-width="1" pathLength="1" opacity=".6"/>
-        <text x="100" y="118" text-anchor="middle">BJ</text>
-      </svg>
       <h1>Quiet, neat rooms in the heart of Ilorin GRA.</h1>
       <p class="lead">Golden BJ Guest House is a peaceful place to rest, in the heart of GRA, behind Noktel Hotel on John Oyewole Street. Send us your dates on WhatsApp and we'll arrange your room.</p>
       <div class="hero-cta">
@@ -251,6 +250,7 @@
       </div>
     </div>
   </div>
+  </div>
 </header>
 
 <section id="about">
@@ -267,7 +267,7 @@
       <div><dt>Phone and WhatsApp</dt><dd><a href="tel:+2348138276920">0813 827 6920</a> or <a href="tel:+2348059002999">0805 900 2999</a></dd></div>
       <div><dt>Guest rating</dt><dd>5.0 out of 5 from 3 Google reviews</dd></div>
       <div><dt>Rooms</dt><dd>Four room styles, each with a ceiling fan and comfortable seating. The Blue Room is air-conditioned.</dd></div>
-      <div><dt>Lounge</dt><dd>A relaxed lounge area with a big TV and mood lighting. Watch the video tour below.</dd></div>
+      <div><dt>Services</dt><dd>Accommodation, lodging and bar, and football shows on the big screen.</dd></div>
       <div><dt>What guests mention</dt><dd>A quiet environment, neat rooms and a relaxing atmosphere.</dd></div>
       <div><dt>Rates</dt><dd>Message us on WhatsApp for today's room rates.</dd></div>
     </dl>
@@ -541,10 +541,12 @@
 
 <footer class="site">
   <div class="wrap">
+    <a class="flogo" href="#top"><img src="logo-horizontal.png" alt="Golden BJ Guest House" width="640" height="192"></a>
     <div class="orn" aria-hidden="true"><i></i></div>
     <h2>Ready when you are.</h2>
     <div class="foot-cta">
       <a class="btn btn-gold" href="https://wa.me/2348138276920?text=Hello%20Golden%20BJ%20Guest%20House%2C%20I%27d%20like%20to%20check%20availability." target="_blank" rel="noopener">WhatsApp 0813 827 6920</a>
+      <a class="btn btn-line" href="https://wa.me/2348059002999?text=Hello%20Golden%20BJ%20Guest%20House%2C%20I%27d%20like%20to%20check%20availability." target="_blank" rel="noopener">WhatsApp 0805 900 2999</a>
       <a class="btn btn-line" href="tel:+2348138276920">Call us</a>
     </div>
     <small>Golden BJ Guest House, 10 John Oyewole Street, behind Noktel Hotel, GRA, Ilorin.</small>
